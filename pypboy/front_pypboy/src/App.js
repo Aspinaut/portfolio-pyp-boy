@@ -1,7 +1,9 @@
+import Home from './Home'
+
 function App() {
   return (
     <div className="App">
-      <h1>Bonjour App !</h1>
+      <Home />
     </div>
   )
 }
