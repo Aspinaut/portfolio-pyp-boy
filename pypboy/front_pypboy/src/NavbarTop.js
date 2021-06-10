@@ -25,22 +25,22 @@ function NavbarTop() {
             <li
               onClick={() => switchActiveTab(3)}
               className={activeTab === 3 ? "nav-item active" : "nav-item"}>
-                <Link to={"/"} className="nav-link">BOARD</Link>
+                <Link to={"/board"} className="nav-link">BOARD</Link>
             </li>
             <li
               onClick={() => switchActiveTab(4)}
               className={activeTab === 4 ? "nav-item active" : "nav-item"}>
-                <Link to={"/"} className="nav-link">MAP</Link>
+                <Link to={"/map"} className="nav-link">MAP</Link>
             </li>
             <li
               onClick={() => switchActiveTab(5)}
               className={activeTab === 5 ? "nav-item active" : "nav-item"}>
-                <Link to={"/"} className="nav-link">RADIO</Link>
+                <Link to={"/radio"} className="nav-link">RADIO</Link>
             </li>
             <li
               onClick={() => switchActiveTab(6)}
               className={activeTab === 6 ? "nav-item active" : "nav-item"}>
-                <Link to={"/"} className="nav-link">EXPLORE</Link>
+                <Link to={"/explore"} className="nav-link">EXPLORE</Link>
             </li>
           </ul>
         </div>
