@@ -10,6 +10,14 @@ import './assets/css/App.css'
 import Home from './Home'
 import GameMenu from './GameMenu'
 import NavbarTop from './NavbarTop'
+import War from './games/War'
+import CorsicanWar from './games/CorsicanWar'
+
+function NoPageFound() {
+  return (
+    <h3>404 - Page Not Found</h3>
+  )
+}
 
 function App() {
   return (
@@ -20,9 +28,16 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/play">
+          <Route exact path="/play">
             <GameMenu />
           </Route>
+          <Route path="/play/war">
+            <War/>
+          </Route>
+          <Route path="/play/corsicanwar">
+            <CorsicanWar/>
+          </Route>
+          <Route component={NoPageFound}/>
         </Switch>
       </Router>
     </div>
