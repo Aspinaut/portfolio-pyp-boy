@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
 import './assets/css/App.css'
 import Home from './Home'
-import Game from './Game'
+import GameMenu from './GameMenu'
 import NavbarTop from './NavbarTop'
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/play">
-            <Game />
+            <GameMenu />
           </Route>
         </Switch>
       </Router>
