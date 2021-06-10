@@ -1,0 +1,126 @@
+@font-face {
+    font-family: pipboy;
+    src: url('../monofonto.ttf');
+}
+
+body {
+    font-family: pipboy, sans-serif;
+    color: #14fe17;
+    background: #272b23;
+}
+
+.body::after {
+    height: 100%;
+    width: 100%;
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0, .5), rgba(0,0,0, .4) 1px, transparent 1px, transparent 2px);
+    opacity: .3;
+    z-index: 1000000;
+    pointer-events: none;
+}
+
+.navbar.navbar-light {
+    border-bottom: 2px solid;
+    margin: 0px 10px;
+}
+
+.navbar.navbar-light::before, .navbar.navbar-light::after {
+    height: 7px;
+    width: 2px;
+    content: '';
+    position: absolute;
+    display: block;
+    z-index: 5000;
+    background: #14fe17;
+    bottom: -8px;
+}
+
+.navbar::before {
+    left: 0px;
+}
+
+.navbar::after {
+    right: 0px;
+}
+
+ul > li.nav-item > a.nav-link, ul > li.nav-item.active > a.nav-link {
+    color: #14fe17 !important;
+    font-size: 32px;
+    line-height: 22px;
+    padding-bottom: 0px;
+}
+
+.nav-item.active::before {
+    left: 0px;
+    border-top: 2px solid;
+    content: '';
+    position: absolute;
+    background: #f00;
+    width: 100%;
+    height: 22px;
+    top: 12px;
+    background: #272b23;
+    border-left: 2px solid;
+    border-right: 2px solid;
+    /* border-bottom: 2px solid; */
+    top: 18px;
+}
+
+.navbar-light .navbar-nav > li.nav-item > .nav-link,
+.navbar-light .navbar-nav > li.nav-item.active > .nav-link {
+    text-align: center;
+    /* width: 50%; */
+    margin: auto;
+    font-size: 32px;
+    line-height: 22px;
+    padding-bottom: 0px;
+    z-index: 50;
+    position: relative;
+    background: #272b23;
+}
+
+.navbar-nav {
+    width: 100%;
+}
+
+.navbar-light ul.navbar-nav > li {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.navbar.navbar-light .navbar-nav {
+    margin: 0px 200px;
+}
+
+.navbar.navbar-light .navbar-nav > li {
+    padding: 0px 20px;
+}
+
+.nav.nav-tabs {
+    margin: 20px;
+    border-bottom: none;
+}
+
+
+.nav.nav-tabs > .nav-item > .nav-link:hover {
+    border: 1px solid transparent;
+}
+
+.nav.nav-tabs > li > a {
+    font-size: 26px !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    padding: 5px 10px;
+}
+
+.nav.nav-tabs > li:nth-child(2) > a {
+    opacity: .5;
+}
+
+.nav.nav-tabs > li:nth-child(3) > a {
+    opacity: .2;
+}

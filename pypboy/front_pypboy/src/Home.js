@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import './home.css'
-import imgBoy from './2344.png'
+import 'bootstrap/dist/js/bootstrap.js'
 
 function NavbarTop() {
   return (
@@ -76,7 +75,6 @@ function Homer() {
             <div className="tab-content">
               <div className="tab-pane active" id="status" role="tabpanel">
                 <div className="center-image">
-                  <img src={imgBoy} alt="" />
                 </div>
                 <div className="stat-bars">
                   <div className="row">
@@ -205,7 +203,7 @@ function Home() {
   return (
     <>
       <div classNameName="container">
-        <NavbarTop />
+        <h1>Home</h1>
       </div>
     </>
   )
