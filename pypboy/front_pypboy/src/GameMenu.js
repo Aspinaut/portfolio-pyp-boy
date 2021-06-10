@@ -1,13 +1,14 @@
 import {
   Link
 } from 'react-router-dom'
+import images from './assets/images/index.js'
 
 function GameMenuCard(props) {
   return (
     <div className="card ms-3 w-25">
       <img src={props.image} class="card-img-top" alt="..."/>
       <div class="card-body">
-        <h5 class="card-title">{props.game}</h5>
+        <h3 class="card-title">{props.game}</h3>
         <p class="card-text">{props.description}</p>
         <Link className="btn btn-primary">Play</Link>
       </div>
@@ -20,52 +21,12 @@ function GameMenu() {
     {
       name: "War",
       description: "A simple well-known game...",
-      image: ""
+      image: images.VaultBoyPlayingCards
     },
     {
       name: "CorsicanWar",
       description: "Be faster than your opponent and win all of his cards !",
-      image: ""
-    },
-    {
-      name: "CorsicanWar",
-      description: "Be faster than your opponent and win all of his cards !",
-      image: ""
-    },
-    {
-      name: "CorsicanWar",
-      description: "Be faster than your opponent and win all of his cards !",
-      image: ""
-    },
-    {
-      name: "CorsicanWar",
-      description: "Be faster than your opponent and win all of his cards !",
-      image: ""
-    },
-    {
-      name: "CorsicanWar",
-      description: "Be faster than your opponent and win all of his cards !",
-      image: ""
-    },
-    {
-      name: "CorsicanWar",
-      description: "Be faster than your opponent and win all of his cards !",
-      image: ""
-    },
-    {
-      name: "CorsicanWar",
-      description: "Be faster than your opponent and win all of his cards !",
-      image: ""
-    },
-    {
-      name: "CorsicanWar",
-      description: "Be faster than your opponent and win all of his cards !",
-      image: ""
-    },
-    {
-      name: "CorsicanWar",
-      description: "Be faster than your opponent and win all of his cards !",
-      image: ""
+      image: images.VaultBoyPlayingCards
     },
   ]
   return (
