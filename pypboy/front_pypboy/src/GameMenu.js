@@ -4,7 +4,7 @@ import War from './games/War'
 import CorsicanWar from './games/CorsicanWar'
 
 function GameMenuCard(props) {
-  const { name, description, image, endpoint} = props
+  const { name, description, image, endpoint } = props
   return (
     <div className="card ms-3 w-25">
       <img src={image} class="card-img-top" alt="..."/>
