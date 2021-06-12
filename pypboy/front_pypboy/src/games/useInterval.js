@@ -1,7 +1,7 @@
 // Custom Hook by Dan Abramov
 import { useEffect, useRef } from 'react';
 
-export function useInterval(callback, delay) {
+function useInterval(callback, delay) {
   const savedCallback = useRef();
 
   // Remember the latest callback.
@@ -20,3 +20,5 @@ export function useInterval(callback, delay) {
     }
   }, [delay]);
 }
+
+export default useInterval
