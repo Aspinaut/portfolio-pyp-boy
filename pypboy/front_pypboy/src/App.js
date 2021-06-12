@@ -11,6 +11,7 @@ import Home from './Home'
 import GameMenu from './GameMenu'
 import NavbarTop from './NavbarTop'
 import War from './games/War'
+import Snake from './games/Snake'
 import CorsicanWar from './games/CorsicanWar'
 
 function NoPageFound() {
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/play/corsicanwar">
             <CorsicanWar/>
+          </Route>
+          <Route path="/play/snake">
+            <Snake/>
           </Route>
           <Route component={NoPageFound}/>
         </Switch>

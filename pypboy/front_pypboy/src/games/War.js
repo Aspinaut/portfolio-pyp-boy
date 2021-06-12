@@ -1,15 +1,35 @@
 import Canvas from './Canvas'
+// import ImageLoader from './ImageLoader'
+// import Sprite from './sprite'
+
+let card = new Image()
+card.src = require("../assets/images/deck/cardBack_green5.png")
+// let imageLoader = new ImageLoader()
+// let listSprites = []
 
 function War() {
-  const draw = (ctx, frameCount) => {
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-    ctx.fillStyle = '#01491C'
-    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    // ctx.beginPath()
-    // ctx.arc(50, 100, 50*Math.sin(frameCount*0.05)**2, 0, 2*Math.PI)
-    // ctx.fill()
+  // const load = () => {
+  //   console.log("load...")
+  //   imageLoader.add("../assets/images/deck/cardBack_green5.png")
+  //   console.log(imageLoader.listImages)
+  //   imageLoader.start(startGame)
+  // }
+  // const startGame = () => {
+  //   console.log("start game !")
+  //   listSprites = []
+  //   for (let image of Object.values(imageLoader.getListImages())) {
+  //     let mySprite = new Sprite(image, 0, 0)
+  //     listSprites.push(mySprite)
+  //   }
+  // }
+  const draw = (ctx) => {
+    // listSprites.forEach((sprite, i) => {
+    //   sprite.draw(ctx)
+    // });
+    console.log(card)
+    // ctx.drawImage(card, 0, 0)
   }
-
+  // load()
   return <Canvas draw={draw} width="1080" height="600"/>
 }
 
