@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import images from './assets/images/index.js'
-import War from './games/War'
-import Snake from './games/Snake'
-import CorsicanWar from './games/CorsicanWar'
+import War from './games/War/War'
+import Snake from './games/Snake/Snake'
+import CorsicanWar from './games/CorsicanWar/CorsicanWar'
 
 function GameMenuCard(props) {
   const { name, description, image, endpoint } = props

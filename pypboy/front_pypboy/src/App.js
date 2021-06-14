@@ -10,9 +10,9 @@ import './assets/css/App.css'
 import Home from './Home'
 import GameMenu from './GameMenu'
 import NavbarTop from './NavbarTop'
-import War from './games/War'
-import Snake from './games/Snake'
-import CorsicanWar from './games/CorsicanWar'
+import War from './games/War/War'
+import Snake from './games/Snake/Snake'
+import CorsicanWar from './games/CorsicanWar/CorsicanWar'
 
 function NoPageFound() {
   return (
