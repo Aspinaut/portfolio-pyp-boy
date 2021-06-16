@@ -123,7 +123,9 @@ function Snake() {
             ref={canvasRef} >
             Sorry, your browser does not support canvas HTML...
           </canvas>
-          <button onClick={startGame}>Start Game</button>
+          <div className="text-center">
+            <button onClick={startGame}>Start Game</button>
+          </div>
         </div>
       </div>
     </>
