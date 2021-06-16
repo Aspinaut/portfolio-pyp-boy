@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import useInterval from '../useInterval'
 import Timer from '../Timer'
 
-const SCALE = 30
-const SPEED = 250
+const SCALE = 60
+const SPEED = 200
 const CANVAS_WIDTH = 1080
 const CANVAS_HEIGHT = 600
 const SNAKE_START = [[8,8], [8,7]]
@@ -16,71 +16,103 @@ const DIRECTIONS = {
 }
 
 function Snake() {
-  // const [timer, setTimer] = useState(0)
-  // const [sec, setSec] = useState('00')
-  // const [min, setMin] = useState('00')
   const [snake, setSnake] = useState(SNAKE_START)
   const [apple, setApple] = useState(APPLE_START)
   const [dir, setDir] = useState([0, -1])
+  const [isActive, setIsActive] = useState(false)
   const canvasRef = useRef()
+  // const buttonHeight = 60
+  // const buttonWidth = 300
 
   useInterval(() => gameLoop(), SPEED)
-  // useInterval(() => Timer(), 1000)
-  //
-  // const Timer = () => {
-  //   setTimer(timer + 1)
-  //   parseInt(sec) < 9 ? setSec(`0${parseInt(sec) + 1}`) : setSec(parseInt(sec) + 1)
-  //   if (parseInt(sec) / 59 === 1) {
-  //     setSec('00')
-  //     parseInt(min) < 9 ? setMin(`0${parseInt(min) + 1}`) : setMin(parseInt(min) + 1)
-  //   }
-  // }
+
+  const gameOver = () => {
+    setIsActive(false)
+  }
+
+  const checkCollide = () => {
+    if (snake[0][0] < 0 || snake[0][1] < 0 || snake[0][0] > CANVAS_WIDTH / SCALE || snake[0][1] > CANVAS_HEIGHT / SCALE) {
+      gameOver()
+      return true
+    }
+    return false
+  }
+
+  const checkApple = () => {
+    if (apple[0] === snake[0][0] && apple[1] === snake[0][1]) {
+      setApple([
+        Math.floor(Math.random() * (CANVAS_WIDTH / SCALE)),
+        Math.floor(Math.random() * (CANVAS_HEIGHT / SCALE)),
+      ])
+      return true
+    }
+    // for (let i=1; i < snake.length; i++) {
+    //   console.log(snake[0], snake[i])
+    //   if (snake[0] === snake[i]) {
+    //     console.log("boom")
+    //     return true
+    //   }
+    // }
+    return false
+  }
 
   const moveSnake = ({keyCode}) => {
     keyCode >= 37 && keyCode <= 40 && setDir(DIRECTIONS[keyCode])
   }
 
   const startGame = () => {
-
+    setIsActive(true)
+    setSnake(SNAKE_START)
+    setApple(APPLE_START)
   }
 
   const gameLoop = () => {
-    const snakeCopy = JSON.parse(JSON.stringify(snake))
-    const newSnakeHead = [snakeCopy[0][0] + dir[0], snakeCopy[0][1] + dir[1]]
-    snakeCopy.unshift(newSnakeHead)
-    snakeCopy.pop()
-    setSnake(snakeCopy)
-  }
-
-  const gameMenu = () => {
-    return (
-      <>
-        <div role="button">Start Game</div>
-      </>
-    )
+    if (isActive) {
+      const snakeCopy = JSON.parse(JSON.stringify(snake))
+      const newSnakeHead = [snakeCopy[0][0] + dir[0], snakeCopy[0][1] + dir[1]]
+      snakeCopy.unshift(newSnakeHead)
+      if(checkCollide()) gameOver()
+      if(!checkApple()) snakeCopy.pop()
+      setSnake(snakeCopy)
+    }
   }
 
   useEffect(() => {
     const context = canvasRef.current.getContext("2d")
-    context.setTransform(SCALE, 0, 0, SCALE, 0, 0)
-    context.clearRect(0, 0, window.innerWidth, window.innerHeight)
-    // snake
-    context.fillStyle = "pink"
-    snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1))
-    // apple
-    context.fillStyle = "lightblue"
-    context.fillRect(apple[0], apple[1], 1, 1)
-    // timer
-    context.transform(0.1, 0, 0, 0.1, 0, 0)
-    context.fillStyle = "#14fe17"
-    // context.fillText(min + " : " + sec, 3, 12)
-    // context.fillText("Start Game", 15, 15)
-  }, [snake, apple]) // ! add [... , timer, min, sec]
+    if (isActive) {
+      context.setTransform(SCALE, 0, 0, SCALE, 0, 0)
+      context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
+      // snake
+      context.fillStyle = "pink"
+      snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1))
+      // apple
+      context.fillStyle = "lightblue"
+      context.fillRect(apple[0], apple[1], 1, 1)
+    }
+    // else {
+      // button
+      // context.fillStyle = "green"
+      // context.fillRect((canvasRef.current.width / 2) - (buttonWidth / 2), (canvasRef.current.height / 2) - (buttonHeight / 2), buttonWidth, buttonHeight)
+      // context.fillStyle = "black"
+      // context.fillText("Start Game", (canvasRef.current.width / 2) - (buttonWidth / 2), (canvasRef.current.height / 2) - (buttonHeight / 2))
+      // canvasRef.current.addEventListener('click', (mouseEvent) => {
+      //   const rect = canvasRef.current.getBoundingClientRect()
+      //   const x = mouseEvent.clientX - rect.left
+      //   const y = mouseEvent.clientY - rect.top
+      //   if ((x >= (canvasRef.current.width / 2) - (buttonWidth / 2))
+      //   && (y >= (canvasRef.current.height / 2) - (buttonHeight / 2))
+      //   && (x <= (canvasRef.current.width / 2) + (buttonWidth / 2))
+      //   && (y <= (canvasRef.current.height / 2) + (buttonHeight / 2))) {
+      //     startGame()
+      //   }
+      // })
+    // }
+  }, [snake, apple, isActive])
 
   return (
     <>
       <div className="text-center mt-3">
-        <Timer />
+        <Timer isActive={isActive}/>
       </div>
       <div className="d-flex justify-content-center">
         <div role="button" tabIndex="0" onKeyDown={key => moveSnake(key)}>
@@ -91,6 +123,7 @@ function Snake() {
             ref={canvasRef} >
             Sorry, your browser does not support canvas HTML...
           </canvas>
+          <button onClick={startGame}>Start Game</button>
         </div>
       </div>
     </>
