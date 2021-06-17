@@ -48,6 +48,7 @@ function War() {
     const context = canvasRef.current.getContext("2d")
     let deck = new Deck()
     deck.createDeck()
+    console.log(deck)
     deck.shuffle()
     deal(deck.deck)
     context.drawImage(deckBack.deck[4].image, posDeckP1.x, posDeckP1.y)

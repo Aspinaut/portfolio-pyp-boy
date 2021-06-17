@@ -32,11 +32,12 @@ const backCards = [
 ]
 
 class Card {
-  constructor(suit, value) {
+  constructor(suit, value, power) {
     this.suit = suit
     this.value = value
     this.image = new Image()
     this.image.src = images[`${this.value}${this.suit}.png`].default
+    this.power = power
   }
 }
 
@@ -75,8 +76,10 @@ class Deck {
 
   createDeck() {
     for (let suit of suits) {
+      let power = 2
       for (let value of values) {
-        this.deck.push(new Card(suit, value))
+        this.deck.push(new Card(suit, value, power))
+        power++
       }
     }
   }
