@@ -22,9 +22,9 @@ body::after {
     pointer-events: none;
 }
 
-.VaultBoy {
-  height: 800px;
-}
+/* .VaultBoy {
+  height: 600px;
+} */
 
 .navbar.navbar-light {
     border-bottom: 2px solid;
@@ -121,10 +121,10 @@ ul > li.nav-item > a.nav-link, ul > li.nav-item.active > a.nav-link {
     padding: 5px 10px;
 }
 
-.nav.nav-tabs > li:nth-child(2) > a {
+/* .nav.nav-tabs > li:nth-child(2) > a {
     opacity: .5;
-}
+} */
 
-.nav.nav-tabs > li:nth-child(3) > a {
+/* .nav.nav-tabs > li:nth-child(3) > a {
     opacity: .2;
-}
+} */

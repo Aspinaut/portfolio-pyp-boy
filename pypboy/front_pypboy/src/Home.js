@@ -1,37 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
 import VaultBoyWalkingPure from './assets/images/VaultBoyWalkingPure.gif'
-
-function NavbarTop() {
-  return (
-    <>
-      <nav className="navbar navbar-expand-lg navbar-light">
-        <div className="collapse navbar-collapse" id="mainNav">
-          <ul className="navbar-nav ">
-            <li className="nav-item active">
-              <a className="nav-link" href="#">RESUME</a>
-            </li>
-            <li className="nav-item ">
-              <a className="nav-link" href="#">PLAY</a>
-            </li>
-            <li className="nav-item ">
-              <a className="nav-link" href="#">BOARD</a>
-            </li>
-            <li className="nav-item ">
-              <a className="nav-link" href="#">MAP</a>
-            </li>
-            <li className="nav-item ">
-              <a className="nav-link" href="#">RADIO</a>
-            </li>
-            <li className="nav-item ">
-              <a className="nav-link" href="#">EXPLORE</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </>
-  )
-}
+import NavbarMid from './NavbarMid'
 
 function Homer() {
   return (
@@ -196,6 +166,9 @@ function Homer() {
           </div>
         </div>
       </navbar>
+      <div className="VaultBoy d-flex align-items-center justify-content-center">
+        <img src={VaultBoyWalkingPure} alt="VaultBoy Walking..."/>
+      </div>
     </>
   )
 }
@@ -203,6 +176,8 @@ function Homer() {
 function Home() {
   return (
     <>
+      <div className="d-flex justify-content-center mt-5 mb-5">
+      </div>
       <div className="VaultBoy d-flex align-items-center justify-content-center">
         <img src={VaultBoyWalkingPure} alt="VaultBoy Walking..."/>
       </div>
