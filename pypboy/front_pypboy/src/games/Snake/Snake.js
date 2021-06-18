@@ -88,6 +88,9 @@ function Snake() {
       // apple
       context.fillStyle = "lightblue"
       context.fillRect(apple[0], apple[1], 1, 1)
+    } else {
+      context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
+      
     }
     // else {
       // button
