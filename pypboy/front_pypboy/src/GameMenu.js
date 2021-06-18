@@ -23,8 +23,8 @@ function GameMenu() {
     {
       name: "Snake",
       component: Snake,
-      description: "A simple well-known game...",
-      image: images.VaultBoyPlayingCards,
+      description: "Let eat those delicious apples...",
+      image: images.Snake,
       endpoint: "snake"
     },
     {

@@ -9,17 +9,21 @@ body {
     background: #272b23;
 }
 
-.body::after {
+body::after {
     height: 100%;
     width: 100%;
     content: "";
     position: absolute;
     top: 0px;
     left: 0px;
-    background: repeating-linear-gradient(0deg, rgba(0,0,0, .5), rgba(0,0,0, .4) 1px, transparent 1px, transparent 2px);
+    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4) 1px, transparent 1px, transparent 2px);
     opacity: .3;
     z-index: 1000000;
     pointer-events: none;
+}
+
+.VaultBoy {
+  height: 800px;
 }
 
 .navbar.navbar-light {

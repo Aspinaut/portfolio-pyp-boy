@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
+import VaultBoyWalkingPure from './assets/images/VaultBoyWalkingPure.gif'
 
 function NavbarTop() {
   return (
@@ -202,8 +203,8 @@ function Homer() {
 function Home() {
   return (
     <>
-      <div classNameName="container">
-        <h1>Home</h1>
+      <div className="VaultBoy d-flex align-items-center justify-content-center">
+        <img src={VaultBoyWalkingPure} alt="VaultBoy Walking..."/>
       </div>
     </>
   )

@@ -85,6 +85,7 @@ function War() {
     } else {
       deckP1.unshift(cardP1)
       deckP2.unshift(cardP2)
+      setWinner("Egalité !")
       console.log("Egalité !")
     }
     setLenDeckP1(deckP1.length)
