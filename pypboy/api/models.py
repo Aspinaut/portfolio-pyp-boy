@@ -6,3 +6,7 @@ class User(models.Model):
 
     def __str__(self):
         return "{}".format(self.name)
+
+class ToDoList(models.Model):
+    text = models.CharField(max_length=200, blank=False)
+    
