@@ -41,7 +41,12 @@ INSTALLED_APPS = [
     'api.apps.PypboyBackConfig',
     'users.apps.UsersConfig',
     'corsheaders',
+    'knox',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

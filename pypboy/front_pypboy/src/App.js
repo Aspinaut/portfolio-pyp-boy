@@ -13,6 +13,10 @@ import NavbarTop from './NavbarTop'
 import War from './games/War/War'
 import Snake from './games/Snake/Snake'
 import CorsicanWar from './games/CorsicanWar/CorsicanWar'
+import Register from './accounts/Register'
+import Login from './accounts/Login'
+import { Provider } from 'react-redux'
+import store from './accounts/store'
 
 function NoPageFound() {
   return (
@@ -23,27 +27,31 @@ function NoPageFound() {
 function App() {
   return (
     <div className="App">
-      <Router >
-        <NavbarTop />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/play">
-            <GameMenu />
-          </Route>
-          <Route path="/play/war">
-            <War/>
-          </Route>
-          <Route path="/play/corsicanwar">
-            <CorsicanWar/>
-          </Route>
-          <Route path="/play/snake">
-            <Snake/>
-          </Route>
-          <Route component={NoPageFound}/>
-        </Switch>
-      </Router>
+      <Provider store={store}>
+        <Router >
+          <NavbarTop />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/play">
+              <GameMenu />
+            </Route>
+            <Route path="/play/war">
+              <War/>
+            </Route>
+            <Route path="/play/corsicanwar">
+              <CorsicanWar/>
+            </Route>
+            <Route path="/play/snake">
+              <Snake/>
+            </Route>
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route component={NoPageFound}/>
+          </Switch>
+        </Router>
+      </Provider >
     </div>
   )
 }

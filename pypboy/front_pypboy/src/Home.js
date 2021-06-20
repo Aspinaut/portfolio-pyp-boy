@@ -1,5 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.js'
 import VaultBoyWalkingPure from './assets/images/VaultBoyWalkingPure.gif'
 import NavbarMid from './NavbarMid'
 
