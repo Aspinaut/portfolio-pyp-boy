@@ -1,10 +1,25 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Login from './accounts/login_new'
 
 function NavbarTop() {
+  const [token, setToken] = useState('')
+  const [loginActive, setLoginActive] = useState('hidden')
   const [activeTab, setActiveTab] = useState(1)
   const switchActiveTab = (index) => {
     setActiveTab(index)
+  }
+
+  const userLogin = (tok) => {
+    setToken(tok)
+  }
+
+  const drawLoginForm = () => {
+    if (loginActive === "hidden") {
+      setLoginActive('')
+    } else {
+      setLoginActive('hidden')
+    }
   }
 
   return (
@@ -45,6 +60,10 @@ function NavbarTop() {
           </ul>
         </div>
       </nav>
+      <div className="d-flex justify-content-end me-2">
+      <div className="btn btn-success" onClick={drawLoginForm}>Log</div>
+      </div>
+      <Login userLogin={userLogin} hidden={loginActive}/>
     </>
   )
 }
