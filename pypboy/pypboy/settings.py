@@ -54,7 +54,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000'
+]
 
 ROOT_URLCONF = 'pypboy.urls'
 
@@ -75,10 +77,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'pypboy.wsgi.application'
-
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
-]
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
