@@ -1,146 +1,121 @@
 function NavbarMid() {
   return (
-    <>
-      <div classNameName="row">
-        <div classNameName="col-12">
-          <ul classNameName="nav nav-tabs">
-            <li classNameName="nav-item">
-              <a href="#nav-skills" classNameName="nav-link" data-toggle="tab" role="tab">SKILLS</a>
-            </li>
-            <li classNameName="nav-item">
-              <a href="#nav-trainings" classNameName="nav-link" data-toggle="tab">TRAININGS</a>
-            </li>
-            <li classNameName="nav-item">
-              <a href="#nav-xp" classNameName="nav-link" data-toggle="tab">EXP</a>
-            </li>
-            <li classNameName="nav-item">
-              <a href="#nav-languages" classNameName="nav-link" data-toggle="tab">LANGUAGES</a>
-            </li>
-            <li classNameName="nav-item">
-              <a href="#nav-passions" classNameName="nav-link" data-toggle="tab">PASSIONS</a>
-            </li>
-            <li classNameName="nav-item">
-              <a href="#ikigai" classNameName="nav-link" data-toggle="tab">IKIGAI</a>
-            </li>
-          </ul>
+    <div className="row">
+      <div className="row">
+        <div className="">
+          <nav className="navbar">
+            <div className="nav nav-tabs" id="nav-tab" role="tablist">
+              <a href="#nav-skills" className="nav-link nav-item" data-toggle="tab" role="tab" aria-selected="true">SKILLS</a>
+              <a href="#nav-trainings" className="nav-link nav-item" data-toggle="tab" role="tab" aria-selected="false">TRAININGS</a>
+              <a href="#nav-xp" className="nav-link nav-item" data-toggle="tab" role="tab" aria-selected="false" >EXP</a>
+              <a href="#nav-languages" className="nav-link nav-item" data-toggle="tab" role="tab" aria-selected="false">LANGUAGES</a>
+              <a href="#nav-passions" className="nav-link nav-item" data-toggle="tab" role="tab" aria-selected="false">PASSIONS</a>
+              <a href="#nav-ikigai" className="nav-link nav-item" data-toggle="tab" role="tab" aria-selected="false">IKIGAI</a>
+            </div>
+          </nav>
         </div>
       </div>
       <div className="tab-content" id="nav-tabContent">
         <div className="tab-pane fade active show" id="nav-skills" role="tabpanel" aria-labelledby="nav-skills-tab" >
           <p>
             <i className="fab fa-linux"></i>
-            <span className="underline">OS :</span> Linux (Fedora, Debian), Windows, MacOS</p>
+            <span className="underline"> OS :</span> Linux, Windows, MacOS</p>
           <p>
             <i className="fas fa-code"></i>
-            <span className="underline">Langages :</span> C, Bash, Ruby, HTML/CSS/JS, Lua, PHP</p>
+            <span className="underline"> Languages :</span> Python, C, Ruby, HTML/CSS/JS</p>
           <p>
             <i className="fas fa-database"></i>
-             <span className="underline">BDD :</span> PostgreSQL, MariaDB</p>
+             <span className="underline"> DB :</span> PostgreSQL, SQLite, MongoDB</p>
           <p>
             <i className="fas fa-puzzle-piece"></i>
-            <span className="underline">Frameworks :</span> Rails, Bootstrap, LOVE2D</p>
-          <p>
-            <i className="fab fa-wordpress"></i>
-             <span className="underline">CMS :</span> Wordpress, Joomla</p>
-          <p>
-            <i className="fas fa-atom"></i>
-            <span className="underline">IDE :</span> Vim, Atom, VsCode</p>
+            <span className="underline"> Frameworks / Libraries :</span> Django, React, Rails, Bootstrap</p>
           <p>
             <i className="fab fa-git-alt"></i>
-            <span className="underline">Logiciels :</span> Git, VirtualBox, Filezilla, Suite Office, Suite Adobe (PS, Illustrator, InDesign)</p>
+            <span className="underline"> Softwares :</span> Git, VirtualBox, Jira, Filezilla, ParseHub, Office Package, Adobe Package (PS, Illustrator, InDesign)</p>
           <p className="last">
             <i className="fas fa-car"></i>
-            Permis B + véhicule</p>
+            <span></span> B License + vehicle</p>
           <hr className="mt-5 hr"/>
         </div>
 
-        <div className="tab-pane fade active show" id="nav-trainings" role="tabpanel" aria-labelledby="nav-trainings-tab" >
-          <p><span className="underline">nov 2020 - :</span>    19network42 coding school, Bruxelles</p>
-          <p><span className="underline">oct 2020 - aout 2021:</span> Formation full-stack Valarep, Valenciennes</p>
-          <p><span className="underline">avril - juin 2020 :</span> Formation découverte web dev, The Hacking Project</p>
-          <p><span className="underline">2017 - 2019 :</span> Etude autodidacte programmation informatique</p>
-          <p><span className="underline">2014 - 2016 :</span> Arts Graphiques, St Luc Tournai</p>
-          <p className="last"><span className="underline">2013 :</span> Baccalauréat STD2A (Arts Appliqués), Louvroil</p>
+        <div className="tab-pane fade" id="nav-trainings" role="tabpanel" aria-labelledby="nav-trainings-tab" >
+          <p><span className="underline">july 2021 - :</span>    19network42 coding school, Brussels</p>
+          <p><span className="underline">oct 2020 - august 2021:</span> full-stack training at Valarep, Valenciennes</p>
+          <p><span className="underline">april - june 2020 :</span> online web dev training, The Hacking Project</p>
+          <p><span className="underline">2017 - 2019 :</span> coding self-learning</p>
+          <p><span className="underline">2014 - 2016 :</span> Graphic Arts, St Luc Tournai</p>
+          <p className="last"><span className="underline">2013 :</span> Baccalauréat STD2A (Applied Arts), Louvroil</p>
           <hr className="mt-5 hr"/>
         </div>
 
-        <div className="tab-pane fade active show" id="nav-xp" role="tabpanel" aria-labelledby="nav-xp-tab" >
-          <p><span className="underline">septembre 2020 :</span> piscine C à l'école 19, Bruxelles</p>
-          <p><span className="underline">juillet 2020 :</span> Projet de site web pour l'association Cuisines Citoyennes Collaboratives</p>
-          <p><span className="underline">janvier - mars 2020 :</span> Ouvrier serriste à Tom d'Aqui, Landes, France</p>
-          <p><span className="underline">2016/2018/2019 :</span> Saisons de vendanges comme ouvrier agricole, Jura et Bourgogne, France</p>
-          <p><span className="underline">mars 2018 :</span> Préparation de l'exposition Oscurana au château de la Borie, Limousin, France</p>
-          <p className="last"><span className="underline">août 2016 :</span> Chantier participatif d'archéologie et de restauration de bâtiments anciens, Siedlecin, Pologne</p>
+        <div className="tab-pane fade" id="nav-xp" role="tabpanel" aria-labelledby="nav-xp-tab" >
+          <p><span className="underline">june - august 2021 :</span> creation of a personal portfolio</p>
+          <p><span className="underline">january - may 2021 :</span> Scrum Master / JS Developer internship for Culturius, Brussels</p>
+          <p><span className="underline">september 2020 :</span> C piscine at 19 school, Brussels</p>
+          <p><span className="underline">july 2020 :</span> website creation for Cuisines Citoyennes Collaboratives</p>
           <hr className="mt-5 hr"/>
         </div>
 
-        <div className="tab-pane fade active show" id="nav-languages" role="tabpanel" aria-labelledby="nav-languages-tab" >
-          <p><span className="underline">Français</span> :
+        <div className="tab-pane fade" id="nav-languages" role="tabpanel" aria-labelledby="nav-languages-tab" >
+          <p><span className="underline">French</span> :
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
           </p>
-          <p><span className="underline">Anglais</span> :
+          <p><span className="underline">English</span> :
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
             <i className="far fa-star"></i>
           </p>
-          <p><span className="underline">Allemand</span> :
+          <p><span className="underline">German</span> :
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
             <i className="far fa-star"></i>
             <i className="far fa-star"></i>
           </p>
-          <p><span className="underline">Espagnol</span> :
+          <p><span className="underline">Spanish</span> :
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
             <i className="far fa-star"></i>
             <i className="far fa-star"></i>
             <i className="far fa-star"></i>
           </p>
-          <p><span className="underline">Italien</span> :
+          <p><span className="underline">Italian</span> :
             <i className="fas fa-star"></i>
             <i className="fas fa-star"></i>
-            <i className="far fa-star"></i>
-            <i className="far fa-star"></i>
-            <i className="far fa-star"></i>
-          </p>
-          <p className="last"><span className="underline">Hindi</span> :
-            <i className="fas fa-star"></i>
-            <i className="far fa-star"></i>
             <i className="far fa-star"></i>
             <i className="far fa-star"></i>
             <i className="far fa-star"></i>
           </p>
           <hr className="mt-5 hr"/>
-
         </div>
 
-        <div className="tab-pane fade active show" id="nav-passions" role="tabpanel" aria-labelledby="nav-passions-tab">
+        <div className="tab-pane fade" id="nav-passions" role="tabpanel" aria-labelledby="nav-passions-tab" >
           <p>
             <i className="fas fa-dice"></i>
-            Jeux (vidéos, de cartes, de société, de rôles)
+            <span></span> Games (video, cards, society, role)
           </p>
           <p>
             <i className="fas fa-book"></i>
-            Lecture (S-F, fantasy, développement personnel)
+            <span></span> Lecture (sci-fi, fantasy, personal development)
           </p>
           <p>
             <i className="fas fa-music"></i>
-            Piano
+            <span></span> Piano
           </p>
           <p>
             <i className="fas fa-fist-raised"></i>
-            Karaté
+            <span></span> Karate
           </p>
+          <hr className="mt-5 hr"/>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
