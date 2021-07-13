@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, Suspense } from 'react'
 import useInterval from '../useInterval'
 import Timer from '../Timer'
 import { Deck, DeckBack } from '../Cards'
+import wrapPromise from '../../wrapPromise'
 
 const CANVAS_WIDTH = 1080
 const CANVAS_HEIGHT = 600
@@ -9,8 +10,9 @@ const deckBack = new DeckBack()
 deckBack.createDeck()
 const CARD_WIDTH = deckBack.deck[0].image.width
 const CARD_HEIGHT = deckBack.deck[0].image.height
-const posDeckP1 = {
-  x: (CANVAS_WIDTH / 2) - (CARD_WIDTH * 2),
+
+const posCardP2 = {
+  x: (CANVAS_WIDTH / 2),
   y: (CANVAS_HEIGHT / 2) - (CARD_HEIGHT / 2)
 }
 const posCardP1 = {
@@ -21,10 +23,11 @@ const posDeckP2 = {
   x: (CANVAS_WIDTH / 2) + (CARD_WIDTH),
   y: (CANVAS_HEIGHT / 2) - (CARD_HEIGHT / 2)
 }
-const posCardP2 = {
-  x: (CANVAS_WIDTH / 2),
+const posDeckP1 = {
+  x: (CANVAS_WIDTH / 2) - (CARD_WIDTH * 2),
   y: (CANVAS_HEIGHT / 2) - (CARD_HEIGHT / 2)
 }
+
 let gameReady = false
 let deckP1 = []
 let deckP2 = []
@@ -142,11 +145,33 @@ function War() {
     // document.getElementById('score').innerHTML = `${lenDeckP1} ${lenDeckP2}`
     // document.getElementById('winner').innerHTML = `${winner}`
     if (!gameReady)
-    context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
+      context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
   }, [lenDeckP1, lenDeckP2, winner])
 
   // attention ! avec setInterval, crée un effet exponentiel...
   useInterval(() => gameLoop(), speed)
+
+  const fetchPerson = () => {
+    return fetch("https://randomuser.me/api")
+      .then(x => x.json())
+      .then(x => x.results[0]);
+  };
+
+  const Person = ({ resource }) => {
+    const person = resource.person.read();
+
+    return <div>{person.name.first}</div>;
+  };
+
+  function createResource() {
+    return (
+      {
+        person: wrapPromise(fetchPerson()),
+      }
+    )
+  }
+
+  const resource = createResource()
 
   return (
     <>
@@ -156,16 +181,19 @@ function War() {
       </div>
       <div className="d-flex justify-content-center">
         <div>
-          <canvas
-            className="border"
-            width={CANVAS_WIDTH}
-            height={CANVAS_HEIGHT}
-            ref={canvasRef} >
-            Sorry, your browser does not support canvas HTML...
-          </canvas>
-          <div className="text-center">
-            {drawButton()}
-          </div>
+          <Suspense fallback={<h1>Loading cards...</h1>}>
+            <Person resource={resource}/>
+            </Suspense>
+            <canvas
+              className="border"
+              width={CANVAS_WIDTH}
+              height={CANVAS_HEIGHT}
+              ref={canvasRef} >
+              Sorry, your browser does not support canvas HTML...
+            </canvas>
+            <div className="text-center">
+              {drawButton()}
+            </div>
         </div>
       </div>
     </>
