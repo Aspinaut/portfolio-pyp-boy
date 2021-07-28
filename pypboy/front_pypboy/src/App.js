@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
 import './assets/css/App.css'
 import Home from './Home'
+import Users from './Users'
 import GameMenu from './GameMenu'
 import NavbarTop from './NavbarTop'
 import War from './games/War/War'
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route path="/play/snake">
             <Snake/>
+          </Route>
+          <Route path="/users">
+            <Users/>
           </Route>
           <Route component={NoPageFound}/>
         </Switch>

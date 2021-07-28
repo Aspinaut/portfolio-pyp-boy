@@ -55,7 +55,7 @@ function NavbarTop() {
             <li
               onClick={() => switchActiveTab(6)}
               className={activeTab === 6 ? "nav-item active" : "nav-item"}>
-                <Link to={"/explore"} className="nav-link">EXPLORE</Link>
+                <Link to={"/users"} className="nav-link">USERS</Link>
             </li>
           </ul>
         </div>
