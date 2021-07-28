@@ -22,15 +22,10 @@ body::after {
     pointer-events: none;
 }
 
-/* .VaultBoy {
-  height: 600px;
-} */
-
-.navbar.navbar-light {
+ .navbar.navbar-light {
     border-bottom: 2px solid;
     margin: 0px 10px;
 }
-
 .navbar.navbar-light::before, .navbar.navbar-light::after {
     height: 7px;
     width: 2px;
@@ -45,6 +40,7 @@ body::after {
 .navbar::before {
     left: 0px;
 }
+
 
 .navbar::after {
     right: 0px;
@@ -69,14 +65,12 @@ ul > li.nav-item > a.nav-link, ul > li.nav-item.active > a.nav-link {
     background: #272b23;
     border-left: 2px solid;
     border-right: 2px solid;
-    /* border-bottom: 2px solid; */
     top: 18px;
 }
 
 .navbar-light .navbar-nav > li.nav-item > .nav-link,
 .navbar-light .navbar-nav > li.nav-item.active > .nav-link {
     text-align: center;
-    /* width: 50%; */
     margin: auto;
     font-size: 32px;
     line-height: 22px;
