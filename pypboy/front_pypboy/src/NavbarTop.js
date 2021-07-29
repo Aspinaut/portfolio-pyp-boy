@@ -29,8 +29,8 @@ const tabs = [
     id: 5,
   },
   {
-    name: 'EXPLORE',
-    endpoint: '/explore',
+    name: 'USERS',
+    endpoint: '/users',
     id: 6,
   }
 ]
@@ -62,7 +62,8 @@ function NavbarTop() {
           <ul className="navbar-nav">
           { tabs.map(tab =>
             <li
-            className="nav-item">
+            onClick={() => setActiveTab(tab.id)}
+            className={activeTab === tab.id ? "nav-item active" : "nav-item"}>
             <Link to={tab.endpoint} className="nav-link">{tab.name}</Link>
             </li>
           ) }
