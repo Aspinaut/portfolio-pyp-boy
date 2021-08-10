@@ -8,7 +8,6 @@ function Users()
         axios
             .get('http://localhost:8000/api/users/')
             .then(res => {
-                console.log(res.data)
                 setUsers(res.data)
             })
             .catch(err => console.log(err))

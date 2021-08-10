@@ -8,6 +8,7 @@ class Login extends Component {
   }
 
   login = event => {
+    event.preventDefault()
     axios({
       url: 'http://localhost:8000/auth/',
       method: 'POST',
@@ -17,6 +18,11 @@ class Login extends Component {
     .then(
       response => {
         this.props.userLogin(response.data.token)
+        sessionStorage.setItem(
+          "isConnected",
+          true
+        )
+        console.log(sessionStorage)
         console.log(response.data.token)
       }
     )
@@ -24,6 +30,7 @@ class Login extends Component {
   }
 
   register = event => {
+    event.preventDefault()
     axios({
       url: 'http://localhost:8000/api/users/',
       method: 'POST',
@@ -44,26 +51,57 @@ class Login extends Component {
     this.setState({credentials: cred})
   }
 
+  // onSubmit = e => {
+  //   // preventdefault empeche une bad request.... pourquoi ??
+  //   e.preventDefault()
+  //   this.login()
+  // }
+  // onSubmit={this.onSubmit}
+
   render() {
+    const { username, password } = this.state.credentials
     return (
-      <>
-        <h1>Login user form</h1>
-        <label>
-          Username :
-          <input type="text" name="username"
-            value={this.state.credentials.username}
-            onChange={this.inputChanged} />
-        </label>
-        <br/>
-        <label>
-          Password :
-          <input type="password" name="password"
-            value={this.state.credentials.password}
-            onChange={this.inputChanged} />
-        </label>
-        <button onClick={this.login}>Login</button>
-        <button onClick={this.register}>Register</button>
-      </>
+      <div className="d-flex justify-content-center mt-5">
+        <div className="col-md-6 m-auto" style={{visibility: this.props.hidden, position: "absolute", zIndex:10}} >
+          <div className="card card-body mt-5">
+            <h2 className="text-center">Login</h2>
+            <form
+            action="http://localhost:8000/auth/"
+            method="POST">
+              <div className="form-group">
+                <label>Username</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="username"
+                  onChange={this.inputChanged}
+                  value={username}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  onChange={this.inputChanged}
+                  value={password}
+                />
+              </div>
+
+              <div className="form-group mt-2">
+                <button onClick={this.login} className="btn btn-primary">
+                  Login
+                </button>
+                <button onClick={this.register} className="btn btn-primary mx-2">
+                  Register
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     )
   }
 }

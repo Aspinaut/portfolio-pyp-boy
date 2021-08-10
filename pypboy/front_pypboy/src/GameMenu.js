@@ -12,7 +12,7 @@ function GameMenuCard(props) {
       <div className="card-body">
         <h3 className="card-title">{name}</h3>
         <p className="card-text">{description}</p>
-        <Link to={`/play/${endpoint}`} className="btn btn-primary">Play</Link>
+        <a href={`/play/${endpoint}`} className="btn btn-primary">Play</a>
       </div>
     </div>
   )

@@ -14,6 +14,7 @@ import NavbarTop from './NavbarTop'
 import War from './games/War/War'
 import Snake from './games/Snake/Snake'
 import CorsicanWar from './games/CorsicanWar/CorsicanWar'
+import Client from './chat/Client.js'
 
 function NoPageFound() {
   return (
@@ -48,6 +49,7 @@ function App() {
           <Route component={NoPageFound}/>
         </Switch>
       </Router>
+      <Client></Client>
     </div>
   )
 }

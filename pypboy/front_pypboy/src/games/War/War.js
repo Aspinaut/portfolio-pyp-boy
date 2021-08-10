@@ -172,6 +172,10 @@ function War() {
   }
 
   const resource = createResource()
+  
+          // <Suspense fallback={<h1>Loading cards...</h1>}>
+          //   <Person resource={resource}/>
+          // </Suspense>
 
   return (
     <>
@@ -181,19 +185,16 @@ function War() {
       </div>
       <div className="d-flex justify-content-center">
         <div>
-          <Suspense fallback={<h1>Loading cards...</h1>}>
-            <Person resource={resource}/>
-            </Suspense>
-            <canvas
-              className="border"
-              width={CANVAS_WIDTH}
-              height={CANVAS_HEIGHT}
-              ref={canvasRef} >
-              Sorry, your browser does not support canvas HTML...
-            </canvas>
-            <div className="text-center">
-              {drawButton()}
-            </div>
+          <canvas
+            className="border"
+            width={CANVAS_WIDTH}
+            height={CANVAS_HEIGHT}
+            ref={canvasRef} >
+            Sorry, your browser does not support canvas HTML...
+          </canvas>
+          <div className="text-center">
+            {drawButton()}
+          </div>
         </div>
       </div>
     </>

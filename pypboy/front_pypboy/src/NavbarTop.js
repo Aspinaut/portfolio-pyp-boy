@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Login from './accounts/login_new'
+import Login from './accounts/login'
+import Logout from './accounts/logout'
 
 const tabs = [
   {
@@ -70,13 +71,16 @@ function NavbarTop() {
           </ul>
         </div>
       </nav>
+        <div className="d-flex justify-content-end me-2">
+          { sessionStorage.isConnected === "true" ?
+            <Logout />
+            :
+            <div className="btn btn-success login-form" onClick={drawLoginForm}>Log in</div>
+          }
+        </div>
+        <Login userLogin={userLogin} hidden={loginActive}/>
     </>
   )
 }
-
-// <div className="d-flex justify-content-end me-2">
-// <div className="btn btn-success" onClick={drawLoginForm}>Log</div>
-// </div>
-// <Login userLogin={userLogin} hidden={loginActive}/>
 
 export default NavbarTop
