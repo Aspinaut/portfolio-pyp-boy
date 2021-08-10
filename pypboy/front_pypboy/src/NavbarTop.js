@@ -72,7 +72,7 @@ function NavbarTop() {
         </div>
       </nav>
         <div className="d-flex justify-content-end me-2">
-          { sessionStorage.isConnected === "true" ?
+          { sessionStorage.userToken ?
             <Logout />
             :
             <div className="btn btn-success login-form" onClick={drawLoginForm}>Log in</div>

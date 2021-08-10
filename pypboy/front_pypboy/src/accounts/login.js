@@ -4,13 +4,14 @@ import axios from 'axios'
 class Login extends Component {
 
   state = {
-    credentials: {username: '', password: ''}
+    credentials: {username: '', password: '', email: ''}
   }
 
   login = event => {
+    console.log(this.state.credentials)
     event.preventDefault()
     axios({
-      url: 'http://localhost:8000/auth/',
+      url: 'http://localhost:8000/api/auth/login',
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       data: JSON.stringify(this.state.credentials)
@@ -19,8 +20,8 @@ class Login extends Component {
       response => {
         this.props.userLogin(response.data.token)
         sessionStorage.setItem(
-          "isConnected",
-          true
+          "userToken",
+          response.data.token
         )
         console.log(sessionStorage)
         console.log(response.data.token)
@@ -32,7 +33,7 @@ class Login extends Component {
   register = event => {
     event.preventDefault()
     axios({
-      url: 'http://localhost:8000/api/users/',
+      url: 'http://localhost:8000/api/auth/register',
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       data: JSON.stringify(this.state.credentials)
@@ -59,14 +60,14 @@ class Login extends Component {
   // onSubmit={this.onSubmit}
 
   render() {
-    const { username, password } = this.state.credentials
+    const { username, password, email } = this.state.credentials
     return (
       <div className="d-flex justify-content-center mt-5">
         <div className="col-md-6 m-auto" style={{visibility: this.props.hidden, position: "absolute", zIndex:10}} >
           <div className="card card-body mt-5">
             <h2 className="text-center">Login</h2>
             <form
-            action="http://localhost:8000/auth/"
+            action="http://localhost:8000/api/auth/login"
             method="POST">
               <div className="form-group">
                 <label>Username</label>
@@ -76,6 +77,17 @@ class Login extends Component {
                   name="username"
                   onChange={this.inputChanged}
                   value={username}
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  name="email"
+                  onChange={this.inputChanged}
+                  value={email}
                 />
               </div>
 

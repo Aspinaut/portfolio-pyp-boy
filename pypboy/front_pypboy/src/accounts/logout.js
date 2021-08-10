@@ -1,26 +1,26 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-const logout = event => {
+const getLogout = event => {
     event.preventDefault()
     axios({
-        url: 'http://localhost:8000/auth/logout/',
+        url: 'http://localhost:8000/api/auth/logout',
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+            'Authorization': `Token ${sessionStorage.userToken}`
+        },
     })
-    .then(
-        response => {
-        console.log("token destroyed")
-        }
-    )
+    .then( res => {
+        sessionStorage.removeItem("userToken")
+    })
     .catch( error => console.error(error))
 }
 
-function LogoutButton()
+function Logout()
 {
     return (
-        <div className="btn btn-danger logout-form" onClick={logout}>Log out</div>
+        <div className="btn btn-danger logout-form" onClick={getLogout}>Log out</div>
     )
 }
 
-export default LogoutButton
+export default Logout
