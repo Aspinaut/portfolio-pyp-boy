@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 
 const getLogout = event => {
@@ -10,8 +10,9 @@ const getLogout = event => {
             'Authorization': `Token ${sessionStorage.userToken}`
         },
     })
-    .then( res => {
+    .then( res => { 
         sessionStorage.removeItem("userToken")
+        sessionStorage.removeItem("username")
     })
     .catch( error => console.error(error))
 }
@@ -19,7 +20,7 @@ const getLogout = event => {
 function Logout()
 {
     return (
-        <div className="btn btn-danger logout-form" onClick={getLogout}>Log out</div>
+        <button onClick={getLogout}>Logout</button>
     )
 }
 

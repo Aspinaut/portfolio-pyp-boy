@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Login from './accounts/login'
 import Logout from './accounts/logout'
+import Register from './accounts/register'
 
 const tabs = [
   {
@@ -39,6 +40,7 @@ const tabs = [
 function NavbarTop() {
   const [token, setToken] = useState('')
   const [loginActive, setLoginActive] = useState('hidden')
+  const [registerActive, setRegisterActive] = useState('hidden')
   const [activeTab, setActiveTab] = useState(1)
 
   const userLogin = (tok) => {
@@ -47,15 +49,23 @@ function NavbarTop() {
 
   const drawLoginForm = () => {
     if (loginActive === "hidden") {
+      if (registerActive === '')
+        setRegisterActive('hidden')
       setLoginActive('')
     } else {
       setLoginActive('hidden')
     }
   }
-  // <li
-  // onClick={() => setActiveTab(tab.id)}
-  // className={activeTab === tab.id ? "nav-item active" : "nav-item"}>
-  // <a href={tab.endpoint} className="nav-link">{tab.name}</a>
+
+  const drawRegisterForm = () => {
+    if (registerActive === "hidden") {
+      if (loginActive === '')
+        setLoginActive('hidden')
+      setRegisterActive('')
+    } else {
+      setRegisterActive('hidden')
+    }
+  }
   return (
     <>
       <nav className="navbar navbar-light navbar-expand-lg">
@@ -65,20 +75,26 @@ function NavbarTop() {
             <li
             onClick={() => setActiveTab(tab.id)}
             className={activeTab === tab.id ? "nav-item active" : "nav-item"}>
-            <Link to={tab.endpoint} className="nav-link">{tab.name}</Link>
+              <Link to={tab.endpoint} className="nav-link">{tab.name}</Link>
             </li>
           ) }
+          <li>
+            <div className="d-flex justify-content-end">
+              { sessionStorage.userToken ?
+                  <Logout />
+                :
+                  <div className="d-flex">
+                    <button className="login-button mx-2" onClick={drawLoginForm}>Login</button>
+                    <button className="register-button" onClick={drawRegisterForm}>Register</button>
+                  </div>
+              }
+            </div>
+          </li>
           </ul>
         </div>
       </nav>
-        <div className="d-flex justify-content-end me-2">
-          { sessionStorage.userToken ?
-            <Logout />
-            :
-            <div className="btn btn-success login-form" onClick={drawLoginForm}>Log in</div>
-          }
-        </div>
-        <Login userLogin={userLogin} hidden={loginActive}/>
+      <Login userLogin={userLogin} visibility={loginActive} setVisibility={setLoginActive}/>
+      <Register userLogin={userLogin} visibility={registerActive} setVisibility={setRegisterActive}/>
     </>
   )
 }

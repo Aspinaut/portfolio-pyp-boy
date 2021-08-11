@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 class Login extends Component {
-
   state = {
-    credentials: {username: '', password: '', email: ''}
+    credentials: { username: '', password: '' },
   }
 
   login = event => {
-    console.log(this.state.credentials)
     event.preventDefault()
     axios({
       url: 'http://localhost:8000/api/auth/login',
@@ -19,28 +17,17 @@ class Login extends Component {
     .then(
       response => {
         this.props.userLogin(response.data.token)
+        this.props.setVisibility('hidden')
         sessionStorage.setItem(
           "userToken",
           response.data.token
         )
-        console.log(sessionStorage)
-        console.log(response.data.token)
-      }
-    )
-    .catch( error => console.error(error))
-  }
+        sessionStorage.setItem(
+          "username",
+          this.state.credentials.username
+        )
+        // ajouter l'user au WS
 
-  register = event => {
-    event.preventDefault()
-    axios({
-      url: 'http://localhost:8000/api/auth/register',
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      data: JSON.stringify(this.state.credentials)
-    })
-    .then(
-      response => {
-        console.log(response.data.token)
       }
     )
     .catch( error => console.error(error))
@@ -52,18 +39,11 @@ class Login extends Component {
     this.setState({credentials: cred})
   }
 
-  // onSubmit = e => {
-  //   // preventdefault empeche une bad request.... pourquoi ??
-  //   e.preventDefault()
-  //   this.login()
-  // }
-  // onSubmit={this.onSubmit}
-
   render() {
-    const { username, password, email } = this.state.credentials
+    const { username, password } = this.state.credentials
     return (
       <div className="d-flex justify-content-center mt-5">
-        <div className="col-md-6 m-auto" style={{visibility: this.props.hidden, position: "absolute", zIndex:10}} >
+        <div id="login-form" className="col-md-6 m-auto" style={{visibility: this.props.visibility, position: "absolute", zIndex:10}} >
           <div className="card card-body mt-5">
             <h2 className="text-center">Login</h2>
             <form
@@ -79,18 +59,6 @@ class Login extends Component {
                   value={username}
                 />
               </div>
-
-              <div className="form-group">
-                <label>Email</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  name="email"
-                  onChange={this.inputChanged}
-                  value={email}
-                />
-              </div>
-
               <div className="form-group">
                 <label>Password</label>
                 <input
@@ -101,13 +69,9 @@ class Login extends Component {
                   value={password}
                 />
               </div>
-
               <div className="form-group mt-2">
                 <button onClick={this.login} className="btn btn-primary">
                   Login
-                </button>
-                <button onClick={this.register} className="btn btn-primary mx-2">
-                  Register
                 </button>
               </div>
             </form>
@@ -118,4 +82,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default Login 
