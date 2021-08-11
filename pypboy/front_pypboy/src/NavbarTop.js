@@ -80,8 +80,8 @@ function NavbarTop() {
           ) }
           <li>
             <div className="d-flex justify-content-end">
-              { sessionStorage.userToken ?
-                  <Logout />
+              { token ?
+                  <Logout setToken={setToken} />
                 :
                   <div className="d-flex">
                     <button className="login-button mx-2" onClick={drawLoginForm}>Login</button>

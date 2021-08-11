@@ -17,6 +17,7 @@ class Register extends Component {
       })
       .then(
         response => {
+          this.props.userLogin(response.data.token)
           this.props.setVisibility('hidden')
           sessionStorage.setItem(
             "userToken",
