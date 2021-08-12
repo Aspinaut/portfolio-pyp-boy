@@ -49,7 +49,7 @@ function App() {
           <Route component={NoPageFound}/>
         </Switch>
       </Router>
-      {/* <Client></Client> */}
+      <Client></Client>
     </div>
   )
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import socket from "../chat/Socket"
 
 class Register extends Component {
-
     state = {
       credentials: { username: '', password: '', email: '' }
     }
@@ -27,7 +27,7 @@ class Register extends Component {
             "username",
             this.state.credentials.username
           )
-            // connecter l'user au WS
+          socket.emit("username", sessionStorage.username)
         }
       )
       .catch( error => console.error(error))
@@ -93,4 +93,3 @@ class Register extends Component {
   }
   
   export default Register
-  

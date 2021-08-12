@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
-
+import socket from "../chat/Socket"
 
 function Logout(props)
 {
@@ -17,8 +17,9 @@ function Logout(props)
             sessionStorage.removeItem("userToken")
             sessionStorage.removeItem("username")
             props.setToken('')
+            socket.emit("username", 'anon')
         })
-        .catch( error => console.error(error))
+        .catch(error => console.error(error))
     }
     return (
         <button onClick={getLogout}>Logout</button>

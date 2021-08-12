@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState} from 'react'
 import { Link } from 'react-router-dom'
 import Login from './accounts/login'
 import Logout from './accounts/logout'
@@ -42,7 +42,7 @@ function NavbarTop() {
   const [loginActive, setLoginActive] = useState('hidden')
   const [registerActive, setRegisterActive] = useState('hidden')
   const [activeTab, setActiveTab] = useState(1)
-
+  
   const userLogin = (tok) => {
     setToken(tok)
   }
@@ -66,6 +66,7 @@ function NavbarTop() {
       setRegisterActive('hidden')
     }
   }
+
   return (
     <>
       <nav className="navbar navbar-light navbar-expand-lg">
@@ -80,8 +81,8 @@ function NavbarTop() {
           ) }
           <li>
             <div className="d-flex justify-content-end">
-              { token ?
-                  <Logout setToken={setToken} />
+              { token || sessionStorage.userToken ?
+                  <Logout setToken={userLogin} />
                 :
                   <div className="d-flex">
                     <button className="login-button mx-2" onClick={drawLoginForm}>Login</button>

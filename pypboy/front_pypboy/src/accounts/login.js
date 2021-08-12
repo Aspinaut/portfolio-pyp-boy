@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import socket from "../chat/Socket"
 
 class Login extends Component {
   state = {
@@ -26,8 +27,7 @@ class Login extends Component {
           "username",
           this.state.credentials.username
         )
-        // ajouter l'user au WS
-
+        socket.emit("username", sessionStorage.username)
       }
     )
     .catch( error => console.error(error))

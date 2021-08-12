@@ -1,71 +1,51 @@
+import "bootstrap/dist/css/bootstrap.css"
+import React from "react"
+import { useEffect, useState } from "react"
+import moment from "moment"
+import socket from "./Socket"
 
-
-// function Client() 
-// {
-//     return (
-//         <div className='chat-box'>
-//             <h1>Chat Box</h1>
-//         </div>
-//     )
-// }
-
-// export default Client
-
-import io from "socket.io-client"
-import "bootstrap/dist/css/bootstrap.css";
-import React from "react";
-import ReactDOM from "react-dom";
-import { useEffect, useState } from "react";
-import moment from "moment";
-
-const username = "vmasse";
-
-const socket = io("http://localhost:3001", {
-  transports: ["websocket", "polling"]
-});
 
 const Client = () => {
-  const [users, setUsers] = useState([]);
-  const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
-
+  const [users, setUsers] = useState([])
+  const [message, setMessage] = useState("")
+  const [messages, setMessages] = useState([])
+  
   useEffect(() => {
-    socket.on("connect", () => {
-      socket.emit("username", username);
-    });
+    socket.on("connect", username => {
+      if (sessionStorage.username)
+        username = sessionStorage.username
+      else
+        username = 'anon'
+      socket.emit("username", username)
+    })
 
     socket.on("users", users => {
-      setUsers(users);
-    });
+      setUsers(users)
+    })
 
     socket.on("message", message => {
-      setMessages(messages => [...messages, message]);
-    });
+      setMessages(messages => [...messages, message])
+    })
 
     socket.on("connected", user => {
-      setUsers(users => [...users, user]);
-    });
+      setUsers(users => [...users, user])
+    })
 
     socket.on("disconnected", id => {
       setUsers(users => {
-        return users.filter(user => user.id !== id);
-      });
-    });
-  }, []);
+        return users.filter(user => user.id !== id)
+      })
+    })
+  }, [])
 
   const submit = event => {
-    event.preventDefault();
-    socket.emit("send", message);
-    setMessage("");
-  };
+    event.preventDefault()
+    socket.emit("send", message)
+    setMessage("")
+  }
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-12 mt-4 mb-4">
-          <h6>Hello {username}</h6>
-        </div>
-      </div>
       <div className="row">
         <div className="col-md-8">
           <h6>Messages</h6>
@@ -107,7 +87,7 @@ const Client = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Client
