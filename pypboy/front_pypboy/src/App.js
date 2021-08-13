@@ -11,10 +11,11 @@ import Home from './Home'
 import Users from './Users'
 import GameMenu from './GameMenu'
 import NavbarTop from './NavbarTop'
+import Client from './chat/Client'
 import War from './games/War/War'
 import Snake from './games/Snake/Snake'
 import CorsicanWar from './games/CorsicanWar/CorsicanWar'
-import Client from './chat/Client.js'
+import Salon from './games/Salon'
 
 function NoPageFound() {
   return (
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route exact path="/play">
             <GameMenu />
+          </Route>
+          <Route path="/play/salon">
+            <Salon/>
           </Route>
           <Route path="/play/war">
             <War/>

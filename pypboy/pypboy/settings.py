@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'api',
     'knox',
     'accounts',
+    'salons',
 ]
 
 REST_FRAMEWORK = {
