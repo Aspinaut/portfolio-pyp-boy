@@ -1,4 +1,3 @@
-import React, { useState, useContext } from 'react'
 import axios from 'axios'
 import socket from "../chat/Socket"
 
@@ -13,7 +12,7 @@ function Logout(props)
                 'Authorization': `Token ${sessionStorage.userToken}`
             },
         })
-        .then( res => { 
+        .then( res => {
             sessionStorage.removeItem("userToken")
             sessionStorage.removeItem("username")
             props.setToken('')

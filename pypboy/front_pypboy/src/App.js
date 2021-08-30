@@ -14,7 +14,6 @@ import NavbarTop from './NavbarTop'
 import Client from './chat/Client'
 import War from './games/War/War'
 import Snake from './games/Snake/Snake'
-import CorsicanWar from './games/CorsicanWar/CorsicanWar'
 import Salon from './games/Salon'
 
 function NoPageFound() {
@@ -40,9 +39,6 @@ function App() {
           </Route>
           <Route path="/play/war">
             <War/>
-          </Route>
-          <Route path="/play/corsicanwar">
-            <CorsicanWar/>
           </Route>
           <Route path="/play/snake">
             <Snake/>

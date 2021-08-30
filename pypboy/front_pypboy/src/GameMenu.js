@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom'
 import images from './assets/images/index.js'
 import War from './games/War/War'
 import Snake from './games/Snake/Snake'
-import CorsicanWar from './games/CorsicanWar/CorsicanWar'
 
 function GameMenuCard(props) {
   const { name, description, image, endpoint } = props
@@ -33,13 +31,6 @@ function GameMenu() {
       description: "A simple well-known game...",
       image: images.VaultBoyPlayingCards,
       endpoint: "salon"
-    },
-    {
-      name: "CorsicanWar",
-      component: CorsicanWar,
-      description: "Be faster than your opponent and win all of his cards !",
-      image: images.VaultBoyPlayingCards,
-      endpoint: "corsicanwar"
     },
   ]
   return (

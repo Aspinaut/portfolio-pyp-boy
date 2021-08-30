@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useRef, Suspense } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import useInterval from '../useInterval'
-import Timer from '../Timer'
 import { Deck, DeckBack } from '../Cards'
-import wrapPromise from '../../wrapPromise'
 
 const CANVAS_WIDTH = 1080
 const CANVAS_HEIGHT = 600
@@ -150,32 +148,6 @@ function War() {
 
   // attention ! avec setInterval, crée un effet exponentiel...
   useInterval(() => gameLoop(), speed)
-
-  const fetchPerson = () => {
-    return fetch("https://randomuser.me/api")
-      .then(x => x.json())
-      .then(x => x.results[0]);
-  };
-
-  const Person = ({ resource }) => {
-    const person = resource.person.read();
-
-    return <div>{person.name.first}</div>;
-  };
-
-  function createResource() {
-    return (
-      {
-        person: wrapPromise(fetchPerson()),
-      }
-    )
-  }
-
-  const resource = createResource()
-  
-          // <Suspense fallback={<h1>Loading cards...</h1>}>
-          //   <Person resource={resource}/>
-          // </Suspense>
 
   return (
     <>
