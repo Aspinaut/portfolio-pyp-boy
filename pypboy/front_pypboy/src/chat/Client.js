@@ -9,7 +9,7 @@ const Client = () => {
   const [users, setUsers] = useState([])
   const [message, setMessage] = useState("")
   const [messages, setMessages] = useState([])
-  
+
   useEffect(() => {
     socket.on("connect", username => {
       if (sessionStorage.username)

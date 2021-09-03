@@ -30,7 +30,7 @@ function GameMenu() {
       component: War,
       description: "A simple well-known game...",
       image: images.VaultBoyPlayingCards,
-      endpoint: "salon"
+      endpoint: "war"
     },
   ]
   return (
