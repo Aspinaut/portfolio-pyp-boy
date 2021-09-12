@@ -22,7 +22,11 @@ body::after {
     pointer-events: none;
 }
 
- .navbar.navbar-light {
+.navbar-toggler {
+  background-color: #14fe17;
+}
+
+.navbar.navbar-light {
     border-bottom: 2px solid;
     margin: 0px 10px;
 }
@@ -50,7 +54,7 @@ ul > li.nav-item > a.nav-link, ul > li.nav-item.active > a.nav-link {
     color: #14fe17 !important;
     font-size: 32px;
     line-height: 22px;
-    padding-bottom: 0px;
+    padding-bottom: 10px;
 }
 
 .nav-item.active::before {

@@ -42,7 +42,7 @@ function NavbarTop() {
   const [loginActive, setLoginActive] = useState('hidden')
   const [registerActive, setRegisterActive] = useState('hidden')
   const [activeTab, setActiveTab] = useState(1)
-  
+
   const userLogin = (tok) => {
     setToken(tok)
   }
@@ -69,29 +69,32 @@ function NavbarTop() {
 
   return (
     <>
-      <nav className="navbar navbar-light navbar-expand-lg">
-        <div className="collapse navbar-collapse" id="mainNav">
+      <nav className="navbar navbar-expand-lg navbar-light">
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarToggler">
+        <div className="d-flex justify-content-start">
           <ul className="navbar-nav">
-          { tabs.map(tab =>
-            <li
-            onClick={() => setActiveTab(tab.id)}
-            className={activeTab === tab.id ? "nav-item active" : "nav-item"}>
-              <Link to={tab.endpoint} className="nav-link">{tab.name}</Link>
+            { tabs.map(tab =>
+              <li
+              onClick={() => setActiveTab(tab.id)}
+              className={activeTab === tab.id ? "nav-item active" : "nav-item"}>
+                <Link to={tab.endpoint} className="nav-link">{tab.name}</Link>
+              </li>
+            ) }
+            <li>
+                { token || sessionStorage.userToken ?
+                    <Logout setToken={userLogin} />
+                  :
+                    <div className="d-flex">
+                      <button className="login-button mx-2" onClick={drawLoginForm}>Login</button>
+                      <button className="register-button" onClick={drawRegisterForm}>Register</button>
+                    </div>
+                }
             </li>
-          ) }
-          <li>
-            <div className="d-flex justify-content-end">
-              { token || sessionStorage.userToken ?
-                  <Logout setToken={userLogin} />
-                :
-                  <div className="d-flex">
-                    <button className="login-button mx-2" onClick={drawLoginForm}>Login</button>
-                    <button className="register-button" onClick={drawRegisterForm}>Register</button>
-                  </div>
-              }
-            </div>
-          </li>
           </ul>
+          </div>
         </div>
       </nav>
       <Login userLogin={userLogin} visibility={loginActive} setVisibility={setLoginActive}/>
